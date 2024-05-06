@@ -28,7 +28,7 @@ class UserController extends Controller
             $validator = \Illuminate\Support\Facades\Validator::make($request->all(), [
               
                 'name'     => 'required|string|max:100',
-                'mobile'   => 'required|numeric|digits:11',
+                'mobile'   => 'required|numeric|digits:8',
                 'email'    => 'required|email|max:150|unique:users',
                 'password' => 'required|min:6',
                 'accept'   => 'required'
