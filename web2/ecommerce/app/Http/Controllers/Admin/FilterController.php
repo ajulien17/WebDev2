@@ -11,24 +11,24 @@ use App\Models\ProductsFiltersValue;
 
 class FilterController extends Controller
 {
-    // Dynamic Filters in the Admin Panel (of products)    
+       
 
 
 
     public function filters() {
-        // Correcting issues in the Skydash Admin Panel Sidebar using Session
+        
         Session::put('page', 'filters');
 
 
         $filters = ProductsFilter::get()->toArray();
-        // dd($filters);
+        
 
 
         return view('admin.filters.filters')->with(compact('filters'));
     }
 
-    public function updateFilterStatus(Request $request) { // Update Filter Status using AJAX in filters.blade.php    
-        if ($request->ajax()) { // if the request is coming via an AJAX call
+    public function updateFilterStatus(Request $request) {     
+        if ($request->ajax()) { 
             $data = $request->all(); // Getting the name/value pairs array that are sent from the AJAX request (AJAX call)
             // dd($data);
 
@@ -42,7 +42,7 @@ class FilterController extends Controller
             ProductsFilter::where('id', $data['filter_id'])->update(['status' => $status]); // $data['filter_id'] comes from the 'data' object inside the $.ajax() method
             // echo '<pre>', var_dump($data), '</pre>';
 
-            return response()->json([ // JSON Responses: https://laravel.com/docs/9.x/responses#json-responses
+            return response()->json([ 
                 'status'    => $status,
                 'filter_id' => $data['filter_id']
             ]);
@@ -64,7 +64,7 @@ class FilterController extends Controller
             ProductsFiltersValue::where('id', $data['filter_id'])->update(['status' => $status]); // $data['filter_id'] comes from the 'data' object inside the $.ajax() method
             // echo '<pre>', var_dump($data), '</pre>';
 
-            return response()->json([ // JSON Responses: https://laravel.com/docs/9.x/responses#json-responses 
+            return response()->json([ 
                 'status'    => $status,
                 'filter_id' => $data['filter_id']
             ]);
@@ -77,7 +77,7 @@ class FilterController extends Controller
 
 
         $filters_values = ProductsFiltersValue::get()->toArray();
-        // dd($filters);
+        
 
 
         return view('admin.filters.filters_values')->with(compact('filters_values'));
