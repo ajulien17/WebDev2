@@ -1,0 +1,6 @@
+{
+    "require": {
+        "munafio/chatify": "^1.6",
+        "pusher/pusher-php-server": "^7.2"
+    }
+}
